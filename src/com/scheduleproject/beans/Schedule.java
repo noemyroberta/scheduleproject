@@ -8,6 +8,8 @@ import com.scheduleproject.exceptions.ContactNotExistent;
 import com.scheduleproject.exceptions.NoSpace;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Noemy Roberta
@@ -30,17 +32,15 @@ public class Schedule {
         } else if (checkVetorSpace != true) {
             throw new NoSpace(this.totalContacts);
         } else {
-            for(int i = 0; i < contacts.length; i++) {
-                this.contacts[totalContacts] = contact;
-                totalContacts++;
-            }
+            this.contacts[totalContacts] = contact;
+            totalContacts++;
+
             return true;
         }
     }
 
-    public String getAll() {
-        return contacts.toString();
-    }
+    public String getAll() { return Arrays.toString(contacts); }
+
 
     public String getByName(String name) throws Exception {
         Contact foundContact = new Contact();

@@ -3,6 +3,8 @@
  */
 package com.scheduleproject.beans;
 
+import java.util.Objects;
+
 /**
  *
  * @author Noemy Roberta
@@ -53,5 +55,19 @@ public class Contact {
                "ID: "+ id +"." +
                "\n";
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(!(o instanceof Contact)) return false;
+        Contact contact = (Contact) o;
+
+        return getName().equals(contact.getName()) &&
+                Objects.equals(getCellphone(), contact.getCellphone());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getCellphone());
+    }
 }
