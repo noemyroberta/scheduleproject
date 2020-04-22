@@ -25,12 +25,12 @@ public class Schedule {
     }
 
     public boolean addContact(Contact contact) throws Exception {
-        boolean checkExistence = checkContactExistence(contact);
-        boolean checkVetorSpace = checkVetorSpace(this.totalContacts);
+        boolean vetorSpace = checkVetorSpace(this.totalContacts);
+        Contact existentContact = checkContactExistence(contact);
 
-        if(checkExistence != false) {
-            throw new ContactExistent(contact);
-        } else if (checkVetorSpace != true) {
+        if(existentContact != null) {
+            throw new ContactExistent(existentContact);
+        } else if (vetorSpace != true) {
             throw new NoSpace(this.totalContacts);
         } else {
             this.contacts[totalContacts] = contact;
@@ -44,6 +44,7 @@ public class Schedule {
 
     public String getByName(String name) throws Exception {
         Contact foundContact;
+
         for(int i = 0; i < this.contacts.length; i++) {
             if(checkString(name) != false) {
                 if(this.contacts[i].getName().equalsIgnoreCase(name)) {
@@ -59,13 +60,14 @@ public class Schedule {
         return null;
     }
 
-    private boolean checkContactExistence(Contact contact) {
+    private Contact checkContactExistence(Contact contact) {
         for(int i = 0; i < this.totalContacts; i++) {
             if(contact.equals(this.contacts[i])) {
-                return true;
+                contact = this.contacts[i];
+                return contact;
             }
         }
-        return false;
+        return null;
     }
 
     private boolean checkVetorSpace(int totalContacts) {

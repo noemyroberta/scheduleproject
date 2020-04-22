@@ -62,9 +62,9 @@ public class Start {
         String cellphone = input.nextLine();
 
         Contact contact = new Contact(name, cellphone);
-        boolean test = schedule.addContact(contact);
+        boolean result = schedule.addContact(contact);
 
-        if (test) {
+        if(result) {
             System.out.println("Contact was registered!");
             System.out.println("");
         }
