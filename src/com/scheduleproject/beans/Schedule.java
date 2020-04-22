@@ -5,6 +5,7 @@ package com.scheduleproject.beans;
 
 import com.scheduleproject.exceptions.ContactExistent;
 import com.scheduleproject.exceptions.ContactNotExistent;
+import com.scheduleproject.exceptions.IsNotStringType;
 import com.scheduleproject.exceptions.NoSpace;
 import org.apache.commons.lang3.StringUtils;
 
@@ -41,24 +42,21 @@ public class Schedule {
 
     public String getAll() { return Arrays.toString(contacts); }
 
-
     public String getByName(String name) throws Exception {
-        Contact foundContact = new Contact();
-
-        for(int i = 0; i < this.totalContacts; i++) {
+        Contact foundContact;
+        for(int i = 0; i < this.contacts.length; i++) {
             if(checkString(name) != false) {
-                if(this.contacts[i].equals(name)) 
+                if(this.contacts[i].getName().equalsIgnoreCase(name)) {
                     foundContact = this.contacts[i];
-                else 
+                    return foundContact.toString();
+                } else {
                     throw new ContactNotExistent(name);
+                }
+            } else {
+                throw new IsNotStringType(name);
             }
-
         }
-        return foundContact.toString();
-    }
-
-    private boolean checkString(String name) {
-        return !StringUtils.isNumeric(name) ? true : false;
+        return null;
     }
 
     private boolean checkContactExistence(Contact contact) {
@@ -72,6 +70,10 @@ public class Schedule {
 
     private boolean checkVetorSpace(int totalContacts) {
         return totalContacts == 5 ? false : true;
+    }
+
+    private boolean checkString(String string) {
+        return string.matches("[A-Z a-z Çç]{"+string.length()+"}");
     }
 
     @Override

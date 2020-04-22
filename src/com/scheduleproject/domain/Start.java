@@ -19,6 +19,26 @@ public class Start {
 
         do {
             showMenu();
+
+            Scanner input = new Scanner(System.in);
+            int option = input.nextInt();
+
+            switch (option) {
+                case 1:
+                    showCreateContact();
+                    break;
+
+                case 2:
+                    showSearchContact();
+                    break;
+
+                case 3:
+                    showAllContacts();
+                    break;
+
+                default:
+                    System.err.println("That's not a valid option. Try again.");
+            }
         } while (true);
     }
 
@@ -30,26 +50,6 @@ public class Start {
         System.out.println("3. See all contacts;");
         System.out.println("---------------------------------------------");
         System.out.print("Tap your desired option: ");
-
-        Scanner input = new Scanner(System.in);
-        int option = input.nextInt();
-
-        switch (option) {
-            case 1:
-                showCreateContact();
-                break;
-
-            case 2:
-                showSearchContact();
-                break;
-
-            case 3:
-                showAllContacts();
-                break;
-
-            default:
-                System.err.println("That's not a valid option. Try again.");
-        }
     }
 
     private static void showCreateContact() throws Exception {
