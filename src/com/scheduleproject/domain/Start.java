@@ -49,16 +49,16 @@ public class Start {
         System.out.println("2. Search for a contact;");
         System.out.println("3. See all contacts;");
         System.out.println("---------------------------------------------");
-        System.out.print("Tap your desired option: ");
+        System.out.print("Type your desired option: ");
     }
 
     private static void showCreateContact() throws Exception {
         Scanner input = new Scanner(System.in);
 
         System.out.println("-------------Creating a Contact--------------");
-        System.out.print("Tap the name: ");
+        System.out.print("Type the name: ");
         String name = input.nextLine();
-        System.out.print("Tap the cellphone number: ");
+        System.out.print("Type the cellphone number: ");
         String cellphone = input.nextLine();
 
         Contact contact = new Contact(name, cellphone);
@@ -74,7 +74,7 @@ public class Start {
         Scanner input = new Scanner(System.in);
 
         System.out.println("------------Searching a Contact--------------");
-        System.out.print("Tap the name: ");
+        System.out.print("Type the name: ");
         String name = input.nextLine();
 
         System.out.println(schedule.getByName(name));
