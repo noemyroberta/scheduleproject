@@ -77,12 +77,20 @@ public class Start {
         System.out.print("Type the name: ");
         String name = input.nextLine();
 
-        System.out.println(schedule.getByName(name));
+        try {
+            System.out.println(schedule.getByName(name));
+        } catch(NullPointerException exception) {
+            System.err.println("There's no contact in the Schedule yet. Try add someone.");
+        }
     }
 
     private static void showAllContacts() {
         System.out.println("------------Showing all Contacts--------------");
 
-        System.out.println(schedule.getAll());
+        try {
+            System.out.println(schedule.getAll());
+        } catch (NullPointerException exception) {
+            System.out.println("There's no contact in the Schedule yet. Try add someone.");
+        }
     }
 }
