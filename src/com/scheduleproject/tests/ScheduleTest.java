@@ -12,7 +12,10 @@ import com.scheduleproject.exceptions.NoSpace;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+/**
+ * This class {@link ScheduleTest} tests methods from class {@link Schedule}
+ * @author Noemy Roberta
+ */
 class ScheduleTest {
 
     Schedule schedule = new Schedule();
